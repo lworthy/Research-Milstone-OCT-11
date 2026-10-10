@@ -1,56 +1,52 @@
-# Welcome to your Expo app 👋
+# BarCast Research Milestone
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+This repository contains my individual research prototype for CSCE 490 Research Milestone. Specifically for my groups BarCast application
 
-## Get started
+## Project Idea
 
-1. Install dependencies
+BarCast is a mobile application designed to help users see what bars (in Five Points) are like before they arrive. The full project may eventually include information such as crowd levels, music, cover charges, events, and other nightlife information.
 
-   ```bash
-   npm install
-   ```
+For this research milestone, I created a smaller prototype focused on the crowd levels.
 
-2. Start the app
+## Technologies Researched
 
-   ```bash
-   npx expo start
-   ```
+### React Native
 
-In the output, you'll find options to open the app in a
+I chose React Native because BarCast is intended to be a mobile application. I researched what the best technology for an mobile application would be and this was one I chose. React Native allows developers to create mobile applications using JavaScript and TypeScript while sharing much of the same code between iOS and Android.
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+Advantages:
+- Works on both iOS and Android
+- Large developer community
+- Works well with TypeScript
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+Disadvantages:
+- Some native features may require extra libraries
+- Mobile development can require additional setup compared to a basic web application
 
-## Get a fresh project
+### Expo
 
-When you're ready, run:
+I used Expo with React Native to create and test the application. Expo made it easy to run the prototype directly on my iPhone using Expo Go. It also provided the development server and tools needed to test changes while developing the app.
 
-```bash
-npm run reset-project
-```
+### TypeScript
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+I used TypeScript for the project instead of plain JavaScript. TypeScript allowed me to define types such as the Bar and CrowdLevel types. This can help catch errors while developing and makes the structure of the program easier to understand.
 
-### Other setup steps
+### npm
 
-- To set up ESLint for linting, run `npx expo lint`, or follow our guide on ["Using ESLint and Prettier"](https://docs.expo.dev/guides/using-eslint/)
-- If you'd like to set up unit testing, follow our guide on ["Unit Testing with Jest"](https://docs.expo.dev/develop/unit-testing/)
-- Learn more about the TypeScript setup in this template in our guide on ["Using TypeScript"](https://docs.expo.dev/guides/typescript/)
+I used npm as the package manager as it was something I am use to using before in previous classes
 
-## Learn more
+## Prototype Features
 
-To learn more about developing your project with Expo, look at the following resources:
+The BarCast prototype currently allows a user to:
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+- View Rooftop, Social, and Breakers
+- See each bar's crowd level
+- See music genre and cover information
+- Filter bars by crowd level
+- Select a bar
+- Choose a new crowd level throw a crowd report
 
-## Join the community
 
-Join our community of developers creating universal apps.
+## What I Learned
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+Through this milestone, I learned how to create a React Native mobile application using Expo and TypeScript. I also learned how Expo can be used to test a mobile application directly on a physical iPhone.
