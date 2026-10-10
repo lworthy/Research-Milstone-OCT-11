@@ -1,4 +1,11 @@
-import { ScrollView, StyleSheet, Text, View } from 'react-native';
+import { useState } from 'react';
+import {
+  Pressable,
+  ScrollView,
+  StyleSheet,
+  Text,
+  View,
+} from 'react-native';
 
 type CrowdLevel = 'Low' | 'Moderate' | 'Packed';
 
@@ -37,6 +44,13 @@ const getCrowdEmoji = (crowd: CrowdLevel) => {
 };
 
 export default function HomeScreen() {
+  const [filter, setFilter] = useState<'All' | CrowdLevel>('All');
+
+  const filteredBars =
+    filter === 'All'
+      ? bars
+      : bars.filter((bar) => bar.crowd === filter);
+
   return (
     <ScrollView style={styles.container}>
       <View style={styles.header}>
@@ -48,7 +62,26 @@ export default function HomeScreen() {
 
       <Text style={styles.sectionTitle}>Tonight in Five Points</Text>
 
-      {bars.map((bar) => (
+      <Text style={styles.label}>Filter by crowd</Text>
+
+      <View style={styles.buttonRow}>
+        {(['All', 'Low', 'Moderate', 'Packed'] as const).map(
+          (option) => (
+            <Pressable
+              key={option}
+              style={[
+                styles.filterButton,
+                filter === option && styles.selectedButton,
+              ]}
+              onPress={() => setFilter(option)}
+            >
+              <Text style={styles.buttonText}>{option}</Text>
+            </Pressable>
+          )
+        )}
+      </View>
+
+      {filteredBars.map((bar) => (
         <View style={styles.card} key={bar.name}>
           <Text style={styles.barName}>{bar.name}</Text>
 
@@ -56,13 +89,8 @@ export default function HomeScreen() {
             Crowd: {getCrowdEmoji(bar.crowd)} {bar.crowd}
           </Text>
 
-          <Text style={styles.info}>
-            Music: {bar.music}
-          </Text>
-
-          <Text style={styles.info}>
-            Cover: {bar.cover}
-          </Text>
+          <Text style={styles.info}>Music: {bar.music}</Text>
+          <Text style={styles.info}>Cover: {bar.cover}</Text>
         </View>
       ))}
     </ScrollView>
@@ -98,6 +126,35 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: 'white',
     marginBottom: 15,
+  },
+
+  label: {
+    fontSize: 16,
+    color: '#bbbbbb',
+    marginBottom: 10,
+  },
+
+  buttonRow: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: 8,
+    marginBottom: 20,
+  },
+
+  filterButton: {
+    backgroundColor: '#292929',
+    paddingVertical: 10,
+    paddingHorizontal: 14,
+    borderRadius: 20,
+  },
+
+  selectedButton: {
+    backgroundColor: '#3478f6',
+  },
+
+  buttonText: {
+    color: 'white',
+    fontWeight: '600',
   },
 
   card: {
